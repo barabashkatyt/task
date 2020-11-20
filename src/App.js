@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Counter from "./components/Counter";
-import Middle from "./components/Middle";
-
+import Average from "./components/Average";
+import CounterList from "./components/CounterList";
 import "./styles.scss";
 
 const data = [
@@ -9,9 +8,6 @@ const data = [
   { id: 2, value: 2 },
   { id: 3, value: 1 },
 ];
-
-let array = [];
-let sum = 0;
 
 export default class App extends Component {
   constructor(props) {
@@ -21,21 +17,20 @@ export default class App extends Component {
     };
   }
 
-  findMiddle = (arr) => {
-    arr.map((obj) => {
-      array.push(obj.value);
-      sum = array.reduce((a, b) => a + b);
-      return sum;
-    });
+  setData = (id, newValue) => {
+    for (let i in data) {
+      if (data[i].id === id) {
+        data[i].value = newValue;
+      }
+    }
+    this.setState({ data: data });
   };
 
   render() {
     return (
       <div>
-        {data.map((counter) => (
-          <Counter key={counter.id} value={counter.value} />
-        ))}
-        <Middle length={data.length} sum={sum} />
+        <CounterList data={this.state.data} setData={this.setData} />
+        <Average data={this.state.data} />
       </div>
     );
   }

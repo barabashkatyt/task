@@ -5,7 +5,7 @@ export default class Counter extends Component {
     super(props);
     this.state = {
       value: this.props.value,
-      key: this.props.key,
+      id: this.props.id,
     };
   }
 
@@ -13,15 +13,17 @@ export default class Counter extends Component {
     this.setState({
       value: this.state.value + 1,
     });
+    this.props.setData(this.state.id, this.state.value + 1);
   };
 
   decreaseValue = (e) => {
     this.setState({
       value: this.state.value - 1,
     });
+    this.props.setData(this.state.id, this.state.value - 1);
   };
+
   render() {
-    console.log(this.props);
     return (
       <div className="counter">
         <b>{this.state.value}</b>
