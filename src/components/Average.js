@@ -22,6 +22,11 @@ class Average extends Component {
     });
     return result;
   };
+  componentDidMount() {
+    this.setState({
+      average: this.findAverage(),
+    });
+  }
 
   render() {
     return (
