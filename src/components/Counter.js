@@ -50,4 +50,5 @@ export default class Counter extends Component {
 Counter.propTypes = {
   id: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+  setData: PropTypes.func.isRequired,
 };
