@@ -1,44 +1,19 @@
 import React, { Component } from "react";
 
 class Average extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      average: 0,
-    };
-  }
-
-  findSum = () => {
+  findAverage = (arr) => {
     let array = [];
-    this.props.data.map((obj) => array.push(obj.value));
+    arr.map((obj) => array.push(obj.value));
     let arrsum = array.reduce((a, b) => a + b);
-    return arrsum;
-  };
-
-  findAverage = () => {
-    let result = this.findSum() / this.props.data.length;
-    this.setState({
-      average: result,
-    });
+    let result = arrsum / arr.length;
     return result;
   };
-  componentDidMount() {
-    this.setState({
-      average: this.findAverage(),
-    });
-  }
 
   render() {
+    const { data } = this.props;
     return (
       <div className="counter">
-        <strong>{this.state.average}&nbsp;</strong>
-        <br></br>
-        <button
-          className="button btn btn-outline-success btn-lg"
-          onClick={() => this.findAverage()}
-        >
-          Find average
-        </button>
+        <strong>Average is {this.findAverage(data)}</strong>
       </div>
     );
   }
