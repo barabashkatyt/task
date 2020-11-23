@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Average extends Component {
   findAverage = (arr) => {
@@ -20,3 +21,6 @@ class Average extends Component {
 }
 
 export default Average;
+Average.propTypes = {
+  data: PropTypes.array.isRequired,
+};

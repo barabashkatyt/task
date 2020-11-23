@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Counter from "./Counter";
+import PropTypes from "prop-types";
 
 export default class CounterList extends Component {
   render() {
@@ -17,3 +18,8 @@ export default class CounterList extends Component {
     );
   }
 }
+
+CounterList.propTypes = {
+  data: PropTypes.array.isRequired,
+  setData: PropTypes.func.isRequired,
+};

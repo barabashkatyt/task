@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class Counter extends Component {
   constructor(props) {
@@ -45,3 +46,8 @@ export default class Counter extends Component {
     );
   }
 }
+
+Counter.propTypes = {
+  id: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
